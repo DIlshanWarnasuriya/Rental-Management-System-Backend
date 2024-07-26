@@ -27,3 +27,15 @@ _
 /src/main/java/org/icet/service/ItemService.java,c\f\cf636ded3e065e42a38c5b121bad52e00fbbc41b
 h
 8src/main/java/org/icet/service/impl/ItemServiceImpl.java,1\f\1fe5fd866c29663813730b02fad14754fe4d011f
+g
+7src/main/java/org/icet/controller/RentalController.java,4\0\40694083bb94752fb8ccef397e98207155876716
+V
+&src/main/java/org/icet/dto/Rental.java,d\4\d46f6c80f275421c2f4d528a9b03b7406d31911b
+_
+/src/main/java/org/icet/entity/RentalEntity.java,b\1\b1f5c8e4c29eccd517448e5009623c66044690fe
+g
+7src/main/java/org/icet/repository/RentalRepository.java,7\c\7cbad172da1f29d0180dd30a6e12f95d6103c6d2
+a
+1src/main/java/org/icet/service/RentalService.java,4\8\48e15ad29ceb20b1139653d9eca73e40f81f4de3
+j
+:src/main/java/org/icet/service/impl/RentalServiceImpl.java,d\9\d94277da6297535943606802e9ef4b7647fb78ce
