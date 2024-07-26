@@ -6,6 +6,7 @@ import org.icet.service.RentalService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/rental")
@@ -30,4 +31,8 @@ public class RentalController {
         return service.updateRental(rental);
     }
 
+    @DeleteMapping("/{id}")
+    Map<String, String> deleteRental(@PathVariable Integer id){
+        return service.deleteRental(id);
+    }
 }
