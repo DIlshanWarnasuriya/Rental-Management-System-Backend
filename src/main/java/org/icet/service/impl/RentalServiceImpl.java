@@ -44,6 +44,12 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public Rental updateRental(Rental rental) {
+
+        if (rental.getReturnDate() != null){
+            ItemEntity itemEntity = mapper.convertValue(itemRepository.findById(rental.getItemId()), ItemEntity.class);
+            itemEntity.setAvailable(true);
+            itemRepository.save(itemEntity);
+        }
         RentalEntity entity = repository.save(mapper.convertValue(rental, RentalEntity.class));
         return mapper.convertValue(entity, Rental.class);
     }
