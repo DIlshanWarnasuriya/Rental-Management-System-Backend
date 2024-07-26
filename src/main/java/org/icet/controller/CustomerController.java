@@ -6,6 +6,7 @@ import org.icet.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
@@ -28,5 +29,10 @@ public class CustomerController {
     @PatchMapping
     Customer updateCustomer(@RequestBody Customer customer){
         return service.updateCustomer(customer);
+    }
+
+    @DeleteMapping("/{id}")
+    Map<String, String> deleteCustomer(@PathVariable Integer id){
+        return service.deleteCustomer(id);
     }
 }

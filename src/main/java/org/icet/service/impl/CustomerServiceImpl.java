@@ -9,7 +9,9 @@ import org.icet.service.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -35,10 +37,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer updateCustomer(Customer customer) {
-        if (repository.findById(customer.getId()).isPresent()){
-            CustomerEntity entity = repository.save(mapper.convertValue(customer, CustomerEntity.class));
-            return mapper.convertValue(entity, Customer.class);
-        }
-        return new Customer();
+        CustomerEntity entity = repository.save(mapper.convertValue(customer, CustomerEntity.class));
+        return mapper.convertValue(entity, Customer.class);
+    }
+
+    @Override
+    public Map<String, String> deleteCustomer(Integer id) {
+        repository.deleteById(id);
+        return Collections.singletonMap("response", "Deleted");
     }
 }
