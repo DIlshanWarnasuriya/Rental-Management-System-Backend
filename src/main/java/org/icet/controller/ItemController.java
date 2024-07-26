@@ -2,7 +2,6 @@ package org.icet.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.icet.dto.Item;
-import org.icet.service.CustomerService;
 import org.icet.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +34,10 @@ public class ItemController {
     @DeleteMapping("/{id}")
     Map<String, String> deleteItem(@PathVariable Integer id){
         return service.deleteItem(id);
+    }
+
+    @GetMapping("/{data}")
+    Item SearchItem(@PathVariable String data){
+        return service.SearchItem(data);
     }
 }

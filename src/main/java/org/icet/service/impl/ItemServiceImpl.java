@@ -46,4 +46,14 @@ public class ItemServiceImpl implements ItemService {
         repository.deleteById(id);
         return Collections.singletonMap("response", "Deleted");
     }
+
+    @Override
+    public Item SearchItem(String data) {
+        for (ItemEntity entity : repository.findAll()) {
+            if (Integer.toString(entity.getId()).equals(data) || entity.getName().equals(data)){
+                return mapper.convertValue(entity, Item.class);
+            }
+        }
+        return null;
+    }
 }

@@ -13,4 +13,6 @@ public interface ItemService {
     Item updateItem(Item item);
 
     Map<String, String> deleteItem(Integer id);
+
+    Item SearchItem(String data);
 }
