@@ -6,6 +6,8 @@ import org.icet.service.CustomerService;
 import org.icet.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/item")
 @CrossOrigin
@@ -17,5 +19,10 @@ public class ItemController {
     @PostMapping
     Item addItem(@RequestBody Item item){
         return service.addItem(item);
+    }
+
+    @GetMapping
+    List<Item> getAllItem(){
+        return service.getAllItem();
     }
 }
