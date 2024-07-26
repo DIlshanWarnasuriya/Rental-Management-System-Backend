@@ -5,6 +5,8 @@ import org.icet.dto.Rental;
 import org.icet.service.RentalService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/rental")
 @CrossOrigin
@@ -16,6 +18,11 @@ public class RentalController {
     @PostMapping
     Rental addRental(@RequestBody Rental rental){
         return service.addRental(rental);
+    }
+
+    @GetMapping
+    List<Rental> getAllRental(){
+        return service.getAllRental();
     }
 
 }
