@@ -5,6 +5,8 @@ import org.icet.dto.Customer;
 import org.icet.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
@@ -16,5 +18,10 @@ public class CustomerController {
     @PostMapping
     Customer addCustomer(@RequestBody Customer customer){
         return service.addCustomer(customer);
+    }
+
+    @GetMapping
+    List<Customer> getAllCustomers(){
+        return service.getAllCustomers();
     }
 }
