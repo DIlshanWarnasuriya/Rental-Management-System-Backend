@@ -7,6 +7,7 @@ import org.icet.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/item")
@@ -29,5 +30,10 @@ public class ItemController {
     @PatchMapping
     Item updateItem(@RequestBody Item item){
         return service.updateItem(item);
+    }
+
+    @DeleteMapping("/{id}")
+    Map<String, String> deleteItem(@PathVariable Integer id){
+        return service.deleteItem(id);
     }
 }

@@ -9,7 +9,9 @@ import org.icet.service.ItemService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +39,11 @@ public class ItemServiceImpl implements ItemService {
     public Item updateItem(Item item) {
         ItemEntity entity = repository.save(mapper.convertValue(item, ItemEntity.class));
         return mapper.convertValue(entity, Item.class);
+    }
+
+    @Override
+    public Map<String, String> deleteItem(Integer id) {
+        repository.deleteById(id);
+        return Collections.singletonMap("response", "Deleted");
     }
 }
