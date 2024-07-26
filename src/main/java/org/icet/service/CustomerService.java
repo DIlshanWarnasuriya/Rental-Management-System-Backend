@@ -13,4 +13,6 @@ public interface CustomerService {
     Customer updateCustomer(Customer customer);
 
     Map<String, String> deleteCustomer(Integer id);
+
+    List<Customer> searchCustomer(String data);
 }

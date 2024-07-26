@@ -45,4 +45,15 @@ public class CustomerServiceImpl implements CustomerService {
         repository.deleteById(id);
         return Collections.singletonMap("response", "Deleted");
     }
+
+    @Override
+    public List<Customer> searchCustomer(String data) {
+        List<Customer> list = new ArrayList<>();
+        for (CustomerEntity entity : repository.findAll()) {
+            if (Integer.toString(entity.getId()).equals(data) || entity.getName().equals(data) || entity.getCity().equals(data)){
+                list.add(mapper.convertValue(entity, Customer.class));
+            }
+        }
+        return list;
+    }
 }

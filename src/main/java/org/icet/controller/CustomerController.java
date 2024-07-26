@@ -35,4 +35,9 @@ public class CustomerController {
     Map<String, String> deleteCustomer(@PathVariable Integer id){
         return service.deleteCustomer(id);
     }
+
+    @GetMapping("/{data}")
+    List<Customer> searchCustomer(@PathVariable String data){
+        return service.searchCustomer(data);
+    }
 }
