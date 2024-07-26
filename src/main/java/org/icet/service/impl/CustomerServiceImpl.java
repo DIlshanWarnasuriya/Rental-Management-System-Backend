@@ -7,7 +7,6 @@ import org.icet.entity.CustomerEntity;
 import org.icet.repository.CustomerRepository;
 import org.icet.service.CustomerService;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
