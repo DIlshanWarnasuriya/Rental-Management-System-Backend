@@ -8,4 +8,6 @@ public interface ItemService {
     Item addItem(Item item);
 
     List<Item> getAllItem();
+
+    Item updateItem(Item item);
 }

@@ -32,4 +32,10 @@ public class ItemServiceImpl implements ItemService {
         }
         return list;
     }
+
+    @Override
+    public Item updateItem(Item item) {
+        ItemEntity entity = repository.save(mapper.convertValue(item, ItemEntity.class));
+        return mapper.convertValue(entity, Item.class);
+    }
 }
