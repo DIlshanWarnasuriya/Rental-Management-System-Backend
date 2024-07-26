@@ -24,4 +24,9 @@ public class CustomerController {
     List<Customer> getAllCustomers(){
         return service.getAllCustomers();
     }
+
+    @PatchMapping
+    Customer updateCustomer(@RequestBody Customer customer){
+        return service.updateCustomer(customer);
+    }
 }
