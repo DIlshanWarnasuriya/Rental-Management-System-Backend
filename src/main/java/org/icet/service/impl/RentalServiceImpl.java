@@ -33,4 +33,10 @@ public class RentalServiceImpl implements RentalService {
         }
         return list;
     }
+
+    @Override
+    public Rental updateRental(Rental rental) {
+        RentalEntity entity = repository.save(mapper.convertValue(rental, RentalEntity.class));
+        return mapper.convertValue(entity, Rental.class);
+    }
 }

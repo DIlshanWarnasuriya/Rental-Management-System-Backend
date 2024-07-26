@@ -25,4 +25,9 @@ public class RentalController {
         return service.getAllRental();
     }
 
+    @PatchMapping
+    Rental updateRental(@RequestBody Rental rental){
+        return service.updateRental(rental);
+    }
+
 }
