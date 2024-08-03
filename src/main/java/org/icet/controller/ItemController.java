@@ -40,4 +40,9 @@ public class ItemController {
     Item SearchItem(@PathVariable String data){
         return service.SearchItem(data);
     }
+
+    @GetMapping("/available")
+    List<Item> getAvailableItem(){
+        return service.getAvailableItem();
+    }
 }

@@ -56,4 +56,15 @@ public class ItemServiceImpl implements ItemService {
         }
         return null;
     }
+
+    @Override
+    public List<Item> getAvailableItem() {
+        List<Item> list = new ArrayList<>();
+        for (ItemEntity entity : repository.findAll()) {
+            if (entity.getAvailable()){
+                list.add(mapper.convertValue(entity, Item.class));
+            }
+        }
+        return list;
+    }
 }

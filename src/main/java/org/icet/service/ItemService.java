@@ -15,4 +15,6 @@ public interface ItemService {
     Map<String, String> deleteItem(Integer id);
 
     Item SearchItem(String data);
+
+    List<Item> getAvailableItem();
 }
