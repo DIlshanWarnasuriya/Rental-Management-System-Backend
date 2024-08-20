@@ -71,4 +71,10 @@ public class RentalServiceImpl implements RentalService {
         }
         return Collections.singletonMap("response", "Deleted");
     }
+
+    @Override
+    public Rental searchById(Integer id) {
+        Optional<RentalEntity> entity = repository.findById(id);
+        return mapper.convertValue(entity, Rental.class);
+    }
 }

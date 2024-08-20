@@ -13,4 +13,6 @@ public interface RentalService {
     Rental updateRental(Rental rental);
 
     Map<String, String> deleteRental(Integer id);
+
+    Rental searchById(Integer id);
 }

@@ -35,4 +35,9 @@ public class RentalController {
     Map<String, String> deleteRental(@PathVariable Integer id){
         return service.deleteRental(id);
     }
+
+    @GetMapping("/{id}")
+    Rental searchById(@PathVariable Integer id){
+        return service.searchById(id);
+    }
 }
