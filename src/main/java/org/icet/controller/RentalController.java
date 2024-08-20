@@ -40,4 +40,9 @@ public class RentalController {
     Rental searchById(@PathVariable Integer id){
         return service.searchById(id);
     }
+
+    @PatchMapping("/return/{id}")
+    Rental returnRental(@PathVariable Integer id){
+        return service.returnRental(id);
+    }
 }

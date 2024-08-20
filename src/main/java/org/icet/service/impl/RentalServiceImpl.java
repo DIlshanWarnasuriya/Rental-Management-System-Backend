@@ -2,6 +2,7 @@ package org.icet.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.icet.dto.Item;
 import org.icet.dto.Rental;
 import org.icet.entity.ItemEntity;
 import org.icet.entity.RentalEntity;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
@@ -77,4 +79,51 @@ public class RentalServiceImpl implements RentalService {
         Optional<RentalEntity> entity = repository.findById(id);
         return mapper.convertValue(entity, Rental.class);
     }
+
+    @Override
+    public Rental returnRental(Integer id) {
+
+        double total = 0.0;
+        double fine = 0.0;
+        int dueDates = 0;
+
+        RentalEntity rental = mapper.convertValue(searchById(id), RentalEntity.class);
+        ItemEntity item = itemRepository.findById(rental.getItemId()).get();
+        Date today = new Date();
+
+
+        long numberOfDays = calculateDifferenceDays(rental.getRentalDate().getTime() ,today.getTime());
+        total += numberOfDays * item.getRentalPerDay();
+        if (numberOfDays == 0){
+            total = item.getRentalPerDay();
+        }
+        else{
+            total += numberOfDays * item.getRentalPerDay();
+        }
+
+
+        long differenceInDays = calculateDifferenceDays(rental.getExpectedDate().getTime(), today.getTime());
+        if (differenceInDays > 0){
+            dueDates = (int) differenceInDays;
+            fine = item.getFinePerDay() * differenceInDays;
+            total+= fine;
+        }
+
+        rental.setReturnDate(today);
+        rental.setDueDate(dueDates);
+        rental.setFine(fine);
+        rental.setTotalCost(total);
+
+        item.setAvailable(true);
+        itemRepository.save(item);
+
+        return mapper.convertValue(repository.save(rental), Rental.class);
+    }
+
+    private long calculateDifferenceDays(long before , long after){
+        long differenceInMillis = after - before;
+        return TimeUnit.MILLISECONDS.toDays(differenceInMillis);
+    }
+
+
 }
