@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> searchCustomer(String data) {
         List<Customer> list = new ArrayList<>();
         for (CustomerEntity entity : repository.findAll()) {
-            if (Integer.toString(entity.getId()).equals(data) || entity.getName().equals(data) || entity.getCity().equals(data)){
+            if (Integer.toString(entity.getId()).equals(data) || entity.getName().equals(data) || entity.getAddress().equals(data)){
                 list.add(mapper.convertValue(entity, Customer.class));
             }
         }
