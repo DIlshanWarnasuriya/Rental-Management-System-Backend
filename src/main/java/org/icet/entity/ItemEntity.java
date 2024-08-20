@@ -18,4 +18,5 @@ public class ItemEntity {
     private Double rentalPerDay;
     private Double finePerDay;
     private Boolean available;
+    private String image_url;
 }
