@@ -18,5 +18,6 @@ public class ItemEntity {
     private Double rentalPerDay;
     private Double finePerDay;
     private Boolean available;
+    @Column(length = 1000000)
     private String image_url;
 }

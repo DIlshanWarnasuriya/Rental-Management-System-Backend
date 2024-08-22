@@ -5,6 +5,7 @@ import org.icet.dto.Item;
 import org.icet.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,9 @@ public class ItemController {
 
     @GetMapping
     List<Item> getAllItem(){
-        return service.getAllItem();
+        List<Item> allItem = service.getAllItem();
+        Collections.reverse(allItem);
+        return allItem;
     }
 
     @PatchMapping
@@ -43,6 +46,8 @@ public class ItemController {
 
     @GetMapping("/available")
     List<Item> getAvailableItem(){
-        return service.getAvailableItem();
+        List<Item> availableItem = service.getAvailableItem();
+        Collections.reverse(availableItem);
+        return availableItem;
     }
 }
