@@ -5,6 +5,7 @@ import org.icet.dto.Customer;
 import org.icet.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,9 @@ public class CustomerController {
 
     @GetMapping
     List<Customer> getAllCustomers(){
-        return service.getAllCustomers();
+        List<Customer> allCustomers = service.getAllCustomers();
+        Collections.reverse(allCustomers);
+        return allCustomers;
     }
 
     @PatchMapping
@@ -38,6 +41,8 @@ public class CustomerController {
 
     @GetMapping("/{data}")
     List<Customer> searchCustomer(@PathVariable String data){
-        return service.searchCustomer(data);
+        List<Customer> customers = service.searchCustomer(data);
+        Collections.reverse(customers);
+        return customers;
     }
 }
