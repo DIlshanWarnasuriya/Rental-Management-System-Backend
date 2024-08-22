@@ -5,6 +5,7 @@ import org.icet.dto.Rental;
 import org.icet.service.RentalService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,9 @@ public class RentalController {
 
     @GetMapping
     List<Rental> getAllRental(){
-        return service.getAllRental();
+        List<Rental> allRental = service.getAllRental();
+        Collections.reverse(allRental);
+        return allRental;
     }
 
     @PatchMapping
